@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Coding Challenge 5</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            background-color: lightseagreen;
+        }
+    </style>
+</head>
+<body>
+    <h1>Modified FLAMES</h1>
+    
+    
+    <input type="text" id="name1" placeholder="Enter name 1">
+    <input type="text" id="name2" placeholder="Enter name 2">
+    
+    
+    <button onclick="flames()">Match Names</button>
+    
+    <h3 id="name"></h3>
+
+    <h4>FLAMES Result:</h4>
+    <h3 id="result"></h3>
+
+
+    <script>
+        function flames() {
+            var name1Input = document.getElementById("name1").value.trim();
+            var name2Input = document.getElementById("name2").value.trim();
+
+            if (!name1Input || !name2Input) {
+                alert("Please enter both names.");
+                return;
+            }
+
+            var name1 = name1Input.replace(/[^a-zA-Z]/g, "").toLowerCase();
+            var name2 = name2Input.replace(/[^a-zA-Z]/g, "").toLowerCase();
+
+            document.getElementById("name").innerText = name1 + " and " + name2;
+
+            var totalCharacters = name1.length + name2.length;
+            var flamesIndex = totalCharacters % 6;
+
+            var result;
+            switch (flamesIndex) {
+                case 0:
+                    result = "S - Sweethearts";
+                    break;
+                case 1:
+                    result = "F - Friends";
+                    break;
+                case 2:
+                    result = "L - Lovers";
+                    break;
+                case 3:
+                    result = "A - Acquaintances";
+                    break;
+                case 4:
+                    result = "M - Marriage";
+                    break;
+                case 5:
+                    result = "E - Enemies";
+                    break;
+            }
+
+            document.getElementById("result").innerText = result;
+        }
+    </script>
+</body>
+</html>
